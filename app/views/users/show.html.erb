@@ -1,0 +1,4 @@
+<h3>user: <%= @user.username %></h3>
+<h3>created: <%= time_ago_in_words(@user.created_at) %></h3>
+<h3>about: <%= @user.about %></h3>
+<%= link_to "Posts", user_posts_path(@user) %>
