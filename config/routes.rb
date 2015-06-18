@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get "/user/:id/posts" => "users#posts", as: :user_posts
+  get "/user/:id/comments" => "users#comments", as: :user_comments
+
   get "/login" => "sessions#index", as: :login_page
   post "/login" => "sessions#login", as: :login
   delete "/logout" => "sessions#destroy", as: :logout
