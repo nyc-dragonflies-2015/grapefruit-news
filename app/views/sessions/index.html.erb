@@ -1,0 +1,24 @@
+<h3>Login</h3>
+
+<%= form_for @user, url: {action: "login"}, html: {method: "post"} do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %><br/>
+  <%= f.label :password %>
+  <%= f.text_field :password %><br/>
+  <%= f.submit %>
+<% end %>
+
+
+
+<h3>Create Accoumt</h3>
+
+<%= form_tag controller: "users", action: "create", method: "post" do %>
+  <%= label_tag :username %>
+  <%= text_field_tag :username %><br/>
+  <%= label_tag :password %>
+  <%= text_field_tag :password %><br/>
+  <%= label_tag :email %>
+  <%= text_field_tag :email %><br/>
+  <%= submit_tag %>
+<% end %>
+
