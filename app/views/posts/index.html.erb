@@ -1,6 +1,7 @@
 <h1>no one cares about these</h1>
 <table>
 <% @posts.each do |post| %>
+<br/>
   <tr>
     <td><%= post.title %></td>  <td><%= time_ago_in_words(post.created_at) %> ago</td>
   </tr><br/>
