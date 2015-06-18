@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def show
+    @user = User.find_by(id: params[:id])
   end
 
   def create
@@ -17,6 +18,12 @@ class UsersController < ApplicationController
   end
 
   def update
+  end
+
+  def posts
+  end
+
+  def comments
   end
 
   private
