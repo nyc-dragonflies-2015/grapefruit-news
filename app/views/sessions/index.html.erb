@@ -12,13 +12,15 @@
 
 <h3>Create Accoumt</h3>
 
-<%= form_tag controller: "users", action: "create", method: "post" do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %><br/>
-  <%= label_tag :password %>
-  <%= text_field_tag :password %><br/>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %><br/>
-  <%= submit_tag %>
+
+<%= form_for @user, url: {action: "create", controller:"users"}, html: {method: "post"} do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %><br/>
+  <%= f.label :password %>
+  <%= f.password_field :password %><br/>
+  <%= f.label :email %>
+  <%= f.text_field :email %><br/>
+  <%= f.submit %>
 <% end %>
+
 
