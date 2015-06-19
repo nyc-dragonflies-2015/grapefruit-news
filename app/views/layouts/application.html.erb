@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GrapefruitNews</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  _______<%= session[:user_id] %>_________
+<%= link_to "Home", root_path %>
+<% if session[:user_id] %>
+  <%= link_to "Logout", logout_path, method: :delete %>
+  <%= link_to "create post", new_post_path %>
+  <%= link_to "User Profile", user_path(the_signed_in_user)%>
+<% else %>
+  <%= link_to "Login", login_page_path %>
+<% end %>
+<br/>
+
+<%= yield %>
+
+</body>
+</html>
