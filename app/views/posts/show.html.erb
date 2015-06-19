@@ -1,6 +1,4 @@
-<h1>THis is the fudging post show page</h1>
-
-author: <%= @post.user.username %><br/><br/>
+<br/>author: <%= @post.user.username %><br/><br/>
 
 <%= @post.title %><br/><br/>
 <% if @post.url %>
@@ -9,4 +7,22 @@ author: <%= @post.user.username %><br/><br/>
   <%= @post.content %><br/><br/>
 <% end %>
 
-<%= link_to_if the_user_wrote_this_post(@post), "edit", edit_post_path(@post) %> | <%= link_to_if the_user_wrote_this_post(@post), "delete", post_path(@post), method: "delete" %>
+<% if the_user_wrote_this_post(@post) %>
+  <td><%= link_to "edit", edit_post_path(@post) %> | <%= link_to "delete", post_path(@post), method: "delete" %></td>
+<%end%> <br/><br/><br/><br/><br/><br/>
+
+<% if the_user_is_signed_in %>
+  <%= link_to "make comment", new_post_comment_path(@post) %>
+<% end %>
+
+<% @comments.each do |comment| %>
+  <li>
+    <%= comment.user.username %>
+    <% if the_user_wrote_this_comment(comment) %>
+      <%= link_to "edit", edit_post_comment_path(post_id: @post.id) %> |
+      <%= link_to "delete", post_comment_path(post_id: @post.id) %>
+    <% end %><br/>
+    <%= comment.content %>
+  </li>
+<% end %>
+
