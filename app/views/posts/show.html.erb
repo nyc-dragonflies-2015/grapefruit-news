@@ -1,1 +1,12 @@
 <h1>THis is the fudging post show page</h1>
+
+author: <%= @post.user.username %><br/><br/>
+
+<%= @post.title %><br/><br/>
+<% if @post.url %>
+  <%= @post.url %><br/><br/>
+<% elsif @post.content %>
+  <%= @post.content %><br/><br/>
+<% end %>
+
+<%= link_to_if the_user_wrote_this_post(@post), "edit", edit_post_path(@post) %> | <%= link_to_if the_user_wrote_this_post(@post), "delete", post_path(@post), method: "delete" %>
