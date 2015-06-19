@@ -1,0 +1,18 @@
+<tr>
+  <td> post: <%= link_to "#{comment.post.title}", post_path(comment.post) %> </td><br/>
+   <td>
+</tr><br/>
+<tr>
+  <td>
+    <%= comment.content %>
+  </td>
+  <td>
+    <%= time_ago_in_words(comment.created_at) %> ago
+  </td>
+</tr>
+<tr>
+  <td><%= link_to "#{comment.user.username}", user_path(comment.user) %></td>
+  <% if the_user_wrote_this_comment(comment) %>
+    <td><%= link_to "edit", edit_post_comment_path(post_id: comment.post.id, id: comment.id) %> | <%= link_to "delete", post_comment_path(post_id: comment.post.id, id: comment.id), method: "delete" %></td>
+  <%end%>
+</tr><br/>
