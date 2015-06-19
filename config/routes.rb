@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :comment_votes, only: [:create, :destroy]
+  resources :post_votes, only: [:create, :destroy]
+
+
   get "/user/:id/posts" => "users#posts", as: :user_posts
   get "/user/:id/comments" => "users#comments", as: :user_comments
 
