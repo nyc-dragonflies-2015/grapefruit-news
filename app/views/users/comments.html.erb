@@ -1,0 +1,7 @@
+<h3>comments by <%= link_to "#{@user.username}", user_path(@user) %></h3>
+
+<% @comments.each do |comment| %>
+  <table>
+    <%= render partial: "comments/comment", locals: {comment: comment} %>
+  </table>
+<% end %>
