@@ -43,6 +43,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by(id: params[:id])
     if post_has_content_and_url?
+      flash[:error] = "You can't have a url and content - PICK ONE"
       redirect_to :back
     else
       nillify_blanks!
