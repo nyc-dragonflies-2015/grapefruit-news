@@ -4,9 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def login
-    p params
     @user = User.find_by(username: sessions_params[:username])
-    if @user.password == params[:password]
+    if @user && @user.password == params[:password]
       session[:user_id] = @user.id
       redirect_to posts_path
     else
