@@ -19,8 +19,8 @@
   <li>
     <%= comment.user.username %>
     <% if the_user_wrote_this_comment(comment) %>
-      <%= link_to "edit", edit_post_comment_path(post_id: @post.id) %> |
-      <%= link_to "delete", post_comment_path(post_id: @post.id) %>
+      <%= link_to "edit", edit_post_comment_path(post_id: @post.id, id: comment.id) %> |
+      <%= link_to "delete", post_comment_path(post_id: @post.id, id: comment.id), method: "delete" %>
     <% end %><br/>
     <%= comment.content %>
   </li>
