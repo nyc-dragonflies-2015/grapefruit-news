@@ -2,7 +2,14 @@
   <td> <%= link_to "#{post.title}", post_path(post) %> </td> <td><%= time_ago_in_words(post.created_at) %> ago</td>
 </tr><br/>
 <tr>
-  <td><%= link_to "#{post.user.username}", user_path(post.user) %></td>
+  <td>
+    <%= link_to "#{post.user.username}", user_path(post.user) %>
+  </td>
+  <td>
+    <%= post.comments.count %> comments
+  </td>
+  <td>
+    <%= link_to "discuss", post_path(id: post.id) %>
   <% if the_user_wrote_this_post(post) %>
     <td><%= link_to "edit", edit_post_path(post) %> | <%= link_to "delete", post_path(post), method: "delete" %></td>
   <%end%>
