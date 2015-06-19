@@ -21,6 +21,8 @@ class UsersController < ApplicationController
   end
 
   def posts
+    @user = User.find_by(id: params[:id])
+    @posts = Post.where(user_id: @user.id)
   end
 
   def comments
@@ -29,6 +31,7 @@ class UsersController < ApplicationController
   private
 
   def users_params
-    params.require(:users).permits(:username, :password, :email, :about, :email, :karma)
+
+    params.require(:user).permit(:username, :password, :about, :email, :karma)
   end
 end
