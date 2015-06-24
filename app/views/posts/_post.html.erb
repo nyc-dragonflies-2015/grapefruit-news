@@ -2,6 +2,7 @@
   <td>
     <span id="votecount"><%= post.post_votes.count %></span>
     <% if user_has_voted_for_post(post) %>
+      <%# whoa, this is really complicated.  it's a hint that there might be something wrong in the db design %>
       <%= link_to "vote down", {controller: "post_votes", action: "destroy", id: the_user_and_posts_vote(post).id}, class: "downvote", method: "delete"%>
     <% else %>
       <%= link_to "vote up", {controller: "post_votes", action: "create", post_id: post.id, user_id: the_signed_in_user.id, vote: true}, class: "upvote" ,method: "post"%>
@@ -24,6 +25,7 @@
   <td>
     <%= link_to "discuss", post_path(id: post.id) %>
   </td>
+  <%# I like that you're trying to be DRY...ther are easier ways...but i really, really like your stretch here %>
   <% if the_user_wrote_this_post(post) %>
     <td><%= link_to "edit", edit_post_path(post) %> | <%= link_to "delete", post_path(post), method: "delete" %></td>
   <%end%>

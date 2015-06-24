@@ -1,5 +1,12 @@
 <h3>posts by <%= @user.username %></h3>
 
 <% @posts.each do |post| %>
+  <%# this is a perfet place to use object:  When the name of the partial matches the key of the local the you can do...
+
+  render partial "posts/post", object: post
+
+  and the value passed in `object` is available by the name of the partial itself (in this case, post)
+
+  it's super handy %>
   <%= render partial: "posts/post", locals: {post: post} %>
 <% end %>

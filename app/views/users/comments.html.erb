@@ -1,3 +1,5 @@
+<%# you don't need to interpolate into a string that which is, uh, already a string %>
+<%# you could also just say `, @user` and it would work%>
 <h3>comments by <%= link_to "#{@user.username}", user_path(@user) %></h3>
 
 <% @comments.each do |comment| %>

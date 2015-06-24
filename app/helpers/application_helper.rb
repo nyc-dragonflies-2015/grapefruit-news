@@ -1,9 +1,15 @@
 module ApplicationHelper
   def the_signed_in_user
+    # We don't need explicit return in Ruby
     return User.find_by(id: session[:user_id])
   end
 
   def the_user_wrote_this_post(post)
+    # shorter as:
+    #   the_signed_in_user.id == post.user.id
+    #
+    #   In the event it doesn't work that's nil == post.user.id, which is
+    #   falsey
     if session[:user_id]
       return true if the_signed_in_user.id == post.user.id
     end
@@ -17,6 +23,9 @@ module ApplicationHelper
 
 
   def the_user_is_signed_in
+    # shorter
+    #
+    # session[:user_id]
     return true if session[:user_id]
   end
 

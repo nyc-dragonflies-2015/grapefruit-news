@@ -1,3 +1,4 @@
+# I'm not crazy about this thing...
 class PostVotesController < ApplicationController
   before_action :must_be_logged_in
   def create

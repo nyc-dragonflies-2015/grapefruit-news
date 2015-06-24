@@ -4,12 +4,29 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :users
-
+  # These routes are reather interesting, but why are these routable
+  # destinations? It seem to me that the user should not be able to find these
+  # routes.  Couldn't they be expressed as something like:
+  #
+  #
+  # POST /post/:id/vote => 'posts#upvote'
+  #
+  # whose implementation:
+  #
+  # def upvote
+  #   Post.find(params[:id]).votes.create
+  # end
+  #
+  # That would create it, no?
+  #
+  # As a user I'm never going to POST /comment_votes/create, am I?  Seems
+  # weird.  I think the Vote is a side-effect of updating the Comment or Post
   resources :comment_votes, only: [:create, :destroy]
   resources :post_votes, only: [:create, :destroy]
 
 
+  # I like these routes, they're nice for that pretty aspect, also, nice work
+  # on using the user_comments
   get "/user/:id/posts" => "users#posts", as: :user_posts
   get "/user/:id/comments" => "users#comments", as: :user_comments
 

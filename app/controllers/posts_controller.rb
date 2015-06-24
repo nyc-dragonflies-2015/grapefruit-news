@@ -74,6 +74,15 @@ class PostsController < ApplicationController
     end
   end
 
+  # I'm intrigued by this method.
+  #
+  # On theone hand, it's neat that you did it.  But you could add a method to
+  # Post to handle this work (it should probably not be done in the controller)
+  #
+  # Post.create_with_blanks_to_nil
+  #
+  # But moreover, I'm not sure why you're doing this.  Is it any worse to have
+  # "" veruss NULL in the db?
   def nillify_blanks!
     params[:post][:url] = nil if post_params[:url] == ""
     params[:post][:content] = nil if post_params[:content] == ""
